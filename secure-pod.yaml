@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-secure-pod
+spec:
+  containers:
+  - name: my-secure-container
+    image: nginx:latest
+    securityContext:
+      runAsUser: 1001             # Use a non-root user with UID 1001 for added security
+      runAsGroup: 3001            # Group GID 3001 to match the user's group
+      fsGroup: 2001               # Filesystem group GID 2001 for proper file access control
+      allowPrivilegeEscalation: false  # Ensure no privilege escalation to enhance security
+  securityContext:
+    runAsNonRoot: true            # Enforce running as a non-root user to avoid root privileges
+
