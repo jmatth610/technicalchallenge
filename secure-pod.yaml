@@ -13,4 +13,12 @@ spec:
       allowPrivilegeEscalation: false  # Ensure no privilege escalation to enhance security
   securityContext:
     runAsNonRoot: true            # Enforce running as a non-root user to avoid root privileges
+    readOnlyRootFilesystem: false # Allows for read/write access to the filesystem
+  allowedCapabilities:
+    - CHOWN
+    - SETGID
+    - SET UID
+    - NET_BIND_SERVICE
+  
+  
 
